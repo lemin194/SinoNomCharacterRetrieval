@@ -2,3 +2,4 @@ test_*
 input
 working
 **/__pycache__
+.hypothesis
