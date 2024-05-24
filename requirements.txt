@@ -1,0 +1,8 @@
+numpy-stl
+PyQt6
+fastai
+albumentations
+ipywidgets
+timm
+lion_pytorch
+open-metric-learning
