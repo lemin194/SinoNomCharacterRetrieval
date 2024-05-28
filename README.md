@@ -5,9 +5,9 @@ This repo contains the code for an image retrieval pipeline designed to retrieve
 
 ## Table of Contents
 - [Goal](#goal)
+- [Approach](#approach)
 - [Repo Tree](#repo-tree)
 - [Installation](#installation)
-- [Approach](#approach)
 - [Result](#result)
 - [Contributors](#contributors)
 
@@ -15,6 +15,29 @@ This repo contains the code for an image retrieval pipeline designed to retrieve
 The goal of this project is to develop an efficient and accurate image retrieval system specifically tailored for Sino-nom characters. Sino-nom characters are a unique aspect of East Asian cultures, blending Chinese characters (Sino) with Vietnamese Nom script (nom). Retrieving similar characters accurately is crucial for various applications, including historical document analysis, cultural preservation, and language research. 
 
 Although many local feature matching algorithms like SIFT, SURF, or ORB exist, these are designed to achieve speed and efficiency in the retrieval process. We decided to tackle this problem with a deep learning approach, which is expected to outperform traditional methods.
+
+
+<!-- 
+## Approach
+The initial straightforward approach is to train a classifier to extract a feature vector from an input image, then use some distance function to calculate similarity of 2 images. Here's our benchmark results of different distance metrics:
+
+|       | Euclidean | Cosine Similarity | KL Divergence | Cross Entropy |
+|-------|-----------|-------------------|---------------|---------------|
+| MRR@5 | 0.92      | 0.80              | 0.82          | 0.88          |
+
+Euclidean Distance, though simple, proved to be the most effective. This result can be explained by the fact that cosine similarity is more suited for text, and probabilistic metrics significantly reduce the feature vector dimension, potentially failing to capture complex image features effectively.
+### Metric Learning
+![Metric learning pipeline](images/MetricLearning.png)
+
+We improved our results by leveraging metric learning, which trains embedding vectors to be more representative. Similar positive samples have embedding vectors pulled closer together, while negative samples are pushed farther away.
+
+We trained our model on triplet loss, which relies on three terms: an anchor, a positive sample, and a negative sample. The idea is to have the distance from the anchor to the positive sample be smaller than the distance to the negative sample.
+
+![Triplet loss](images/triplet_loss.png)
+
+
+We found that online triplet mining significantly speeds up training by mining the hardest triplets available in one batch. This approach yielded a final MRR@5 score of 0.957. -->
+
 
 ## Repo Tree
 ```
@@ -50,25 +73,6 @@ pip install -r requirements.txt
 
 After the installation, you can start by running the training scripts provided.
 
-
-<!-- The initial straightforward approach is to train a classifier to extract a feature vector from an input image, then use some distance function to calculate similarity of 2 images. Here's our benchmark results of different distance metrics:
-
-|       | Euclidean | Cosine Similarity | KL Divergence | Cross Entropy |
-|-------|-----------|-------------------|---------------|---------------|
-| MRR@5 | 0.92      | 0.80              | 0.82          | 0.88          |
-
-Euclidean Distance, though simple, proved to be the most effective. This result can be explained by the fact that cosine similarity is more suited for text, and probabilistic metrics significantly reduce the feature vector dimension, potentially failing to capture complex image features effectively.
-### Metric Learning
-![Metric learning pipeline](images/MetricLearning.png)
-
-We improved our results by leveraging metric learning, which trains embedding vectors to be more representative. Similar positive samples have embedding vectors pulled closer together, while negative samples are pushed farther away.
-
-We trained our model on triplet loss, which relies on three terms: an anchor, a positive sample, and a negative sample. The idea is to have the distance from the anchor to the positive sample be smaller than the distance to the negative sample.
-
-![Triplet loss](images/triplet_loss.png)
-
-
-We found that online triplet mining significantly speeds up training by mining the hardest triplets available in one batch. This approach yielded a final MRR@5 score of 0.957. -->
 
 ## Result
 Our final approach using deep metric learning and online hard triplet mining resulted in an impressive MRR@5 score of 0.957, significantly outperforming our initial methods and achieving high retrieval accuracy for Sino-nom characters.
