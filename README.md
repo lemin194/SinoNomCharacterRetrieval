@@ -41,7 +41,7 @@ pip install -U open-metric-learning
 pip install -r requirements.txt
 ```
 
-After the installation, you can start the training by runing the training scripts provided.
+After the installation, you can start by runing the training scripts provided.
 
 
 
