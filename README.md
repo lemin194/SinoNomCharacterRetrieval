@@ -4,11 +4,18 @@ INT3404E 20 - Image Processing: Image Retrieval
 This repo contains the code for an image retrieval pipeline designed to retrieve Sino-nom characters. The dataset includes 3D items in the database folder and 2D items in the query folder. The task is to retrieve the 5 most similar 3D items for each query image.
 
 ## Table of Contents
+- [Goal](#goal)
 - [Repo Tree](#repo-tree)
 - [Installation](#installation)
 - [Approach](#approach)
 - [Result](#result)
 - [Contributors](#contributors)
+
+## Goal
+The goal of this project is to develop an efficient and accurate image retrieval system specifically tailored for Sino-nom characters. Sino-nom characters are a unique aspect of East Asian cultures, blending Chinese characters (Sino) with Vietnamese Nom script (nom). Retrieving similar characters accurately is crucial for various applications, including historical document analysis, cultural preservation, and language research. 
+
+Although many local feature matching algorithms like SIFT, SURF, or ORB exist, these are designed to achieve speed and efficiency in the retrieval process. We decided to tackle this problem with a deep learning approach, which is expected to outperform traditional methods.
+
 ## Repo Tree
 ```
 ├── classification            # Code for classification pipeline
@@ -43,12 +50,6 @@ pip install -r requirements.txt
 
 After the installation, you can start by running the training scripts provided.
 
-
-
-## Goal
-The goal of this project is to develop an efficient and accurate image retrieval system specifically tailored for Sino-nom characters. Sino-nom characters are a unique aspect of East Asian cultures, blending Chinese characters (Sino) with Vietnamese Nom script (nom). Retrieving similar characters accurately is crucial for various applications, including historical document analysis, cultural preservation, and language research. 
-
-Although many local feature matching algorithms like SIFT, SURF, or ORB exist, these are designed to achieve speed and efficiency in the retrieval process. We decided to tackle this problem with a deep learning approach, which is expected to outperform traditional methods.
 
 <!-- The initial straightforward approach is to train a classifier to extract a feature vector from an input image, then use some distance function to calculate similarity of 2 images. Here's our benchmark results of different distance metrics:
 
