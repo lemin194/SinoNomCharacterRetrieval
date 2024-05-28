@@ -100,7 +100,7 @@ for char in tqdm(charset):
       img = np.array(img_pil)
 
       if (img < 255).sum() < 10:
-        # Image too white (Almost nothing has been drawn)
+        # Image too white (Virtually nothing has been drawn)
         continue
       save_img(img, str(curr_lbl), font, False)
     
@@ -111,7 +111,7 @@ for char in tqdm(charset):
       img = np.array(img_pil)
       
       if (img < 255).sum() < 10:
-        # Image too white (Almost nothing has been drawn)
+        # Image too white (Virtually nothing has been drawn)
         continue
       
       save_img(img, str(curr_lbl), font, True)
