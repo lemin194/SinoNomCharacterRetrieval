@@ -29,7 +29,7 @@ This repo contains the code for an image retrieval pipeline designed to retrieve
 └── requirements.txt
 ```
 ## Approach
-Although many local feature matching algorithms like SIFT, SURF, or ORB exist, these are designed to achieve speed and efficiency in the retrieval process. We decided to approach this problem with a deep learning solution, which is expected to outperform traditional methods.
+Although many local feature matching algorithms like SIFT, SURF, or ORB exist, these are designed to achieve speed and efficiency in the retrieval process. We decided to tackle this problem with a deep learning approach, which is expected to outperform traditional methods.
 
 The initial straightforward approach is to train a classifier to extract a feature vector from an input image, then use some distance function to calculate similarity of 2 images. Here's our benchmark results of different distance metrics:
 
