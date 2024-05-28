@@ -16,7 +16,7 @@ The goal of this project is to develop an efficient and accurate image retrieval
 
 Although many local feature matching algorithms like SIFT, SURF, or ORB exist, these are designed to achieve speed and efficiency in the retrieval process. We decided to tackle this problem with a deep learning approach, which is expected to outperform traditional methods.
 
-This repo implements:
+**This repo implements:**
 - Depth buffer capture of 3D Sino-nom characters into a 2D image.
 - Image classification pipeline using PyTorch Image Models for features extraction.
 - Deep metric learning pipeline with Triplet loss and mining to learn an embedding representation.
