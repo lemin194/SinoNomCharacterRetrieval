@@ -70,7 +70,7 @@ We trained our model on triplet loss, which relies on three terms: an anchor, a 
 We found that online triplet mining significantly speeds up training by mining the hardest triplets available in one batch. This approach yielded a final MRR@5 score of 0.957. -->
 
 ## Result
-Our final approach using deep metric learning and online hard triplet mining resulted in an impressive MRR@5 score of 0.957, significantly outperforming initial methods and achieving high retrieval accuracy for Sino-nom characters.
+Our final approach using deep metric learning and online hard triplet mining resulted in an impressive MRR@5 score of 0.957, significantly outperforming our initial methods and achieving high retrieval accuracy for Sino-nom characters.
 
 ## Contributors
 - Lê Minh Đức - 22028267
