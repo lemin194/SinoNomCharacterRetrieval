@@ -7,6 +7,23 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 import os
 
+
+from retrieval.oml.timm_extractor import TimmExtractor, create_timm_body
+from classification.ml_decoder.ml_decoder.ml_decoder import MLDecoder
+from fastai.vision.learner import _update_first_layer, has_pool_type, create_head, num_features_model
+import torch.nn as nn
+from copy import deepcopy
+from torch.optim import AdamW, SGD
+from lion_pytorch import Lion
+from torch.optim.lr_scheduler import LinearLR, SequentialLR, CosineAnnealingLR
+import torch
+import pandas as pd
+from retrieval.transform import test_transform
+
+
+
+# Capture depth buffer of 3D meshes
+# Export output images to output_dir
 def capture_depth_buffer(test_dir, output_dir):
   img_width, img_height = (64, 64)
 
@@ -63,21 +80,10 @@ def capture_depth_buffer(test_dir, output_dir):
       plt.imsave(target, normalized_image, cmap='gray')
       
 
-
-from retrieval.oml.timm_extractor import TimmExtractor, create_timm_body
-from classification.ml_decoder.ml_decoder.ml_decoder import MLDecoder
-from fastai.vision.learner import _update_first_layer, has_pool_type, create_head, num_features_model
-import torch.nn as nn
-from copy import deepcopy
-from torch.optim import AdamW, SGD
-from lion_pytorch import Lion
-from torch.optim.lr_scheduler import LinearLR, SequentialLR, CosineAnnealingLR
-import torch
-import pandas as pd
-from retrieval.transform import test_transform
-
-
+# Retrieval script
+# Export output csv to output_dir
 def image_retrieval(args, test_dir, output_dir):
+  # Load model from config
   config = dict(args._get_kwargs())
   extractor = TimmExtractor(args.model_name, config)
   
@@ -88,7 +94,7 @@ def image_retrieval(args, test_dir, output_dir):
   extractor.load_state_dict(state_dict)
   print('Loaded pretrained model with score=%.4f' % best_score)
   
-  db_img_path = os.path.join(test_dir, 'database/pairs')
+  db_img_path = os.path.join(output_dir, 'pairs')
   q_img_path = os.path.join(test_dir, 'queries')
   n_db = len(os.listdir(db_img_path))
   n_q = len(os.listdir(q_img_path))
@@ -97,6 +103,8 @@ def image_retrieval(args, test_dir, output_dir):
   db_vecs = []
   eval_model.to(args.device)
 
+
+  # Extract feature vectors of database images
   for i in tqdm(range(n_db), position=0, leave=True):
     db_img = cv2.imread(os.path.join(db_img_path, '%d.png' % i))
     x = test_transform(image=db_img)['image'][[0], :, :]
@@ -107,6 +115,8 @@ def image_retrieval(args, test_dir, output_dir):
     db_vec = db_vec.detach().cpu().numpy()
     db_vecs += [db_vec]
 
+  # Calculate similarity with Euclidean Distance
+  # Returns an array of scores corresponding to each database item.
   def score_query(q_vec):
     db_scores = []
     for i in range(n_db):
@@ -115,6 +125,7 @@ def image_retrieval(args, test_dir, output_dir):
     return db_scores
     
 
+  # Retrieve similar database items for each query images
   def retrieve():
     res = []
     for i in tqdm(range(n_q), position=0, leave=True):
@@ -127,7 +138,11 @@ def image_retrieval(args, test_dir, output_dir):
         q_vec = eval_model(x)
       q_vec = q_vec.detach().cpu().numpy()
       db_scores = score_query(q_vec)
+      
+      # Rank items
       rank = np.argsort(db_scores)[::-1]
+      
+      # Write output
       res += [{
         'query_name': img_name.split('/')[-1],
         'predictions': ','.join(['%d.stl' % i for i in rank[:5]]),
@@ -136,5 +151,3 @@ def image_retrieval(args, test_dir, output_dir):
     res.to_csv(os.path.join(output_dir, 'pred.csv'), index=False)
 
   retrieve()
-      
-      
