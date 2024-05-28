@@ -34,6 +34,7 @@ The initial straightforward approach is to train a classifier to extract a featu
 |       | Euclidean | Cosine Similarity | KL Divergence | Cross Entropy |
 |-------|-----------|-------------------|---------------|---------------|
 | MRR@5 | 0.92      | 0.80              | 0.82          | 0.88          |
+
 Euclidean Distance, though simple, proved to be the most effective. This result can be explained as cosine similarity is more suited for text, and probabilistic metrics might not capture complex image features effectively.
 ### Metric Learning
 ![Metric learning pipeline](images/MetricLearning.png)
