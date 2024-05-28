@@ -30,7 +30,9 @@ This repo contains the code for an image retrieval pipeline designed to retrieve
 ```
 ## Approach
 Although many local feature matching algorithms like SIFT, SURF, or ORB exist, these are designed to achieve speed and efficiency in the retrieval process. We decided to approach this problem with a deep learning solution, which is believed to outperform local features descriptors algorithms.
+
 The initial straightforward approach is to train a classifier to extract a feature vector from an input image, then use some distance function to calculate similarity of 2 images. Here's our benchmark results of different distance metrics:
+
 |       | Euclidean | Cosine Similarity | KL Divergence | Cross Entropy |
 |-------|-----------|-------------------|---------------|---------------|
 | MRR@5 | 0.92      | 0.80              | 0.82          | 0.88          |
@@ -38,6 +40,7 @@ The initial straightforward approach is to train a classifier to extract a featu
 Euclidean Distance, though simple, proved to be the most effective. This result can be explained as cosine similarity is more suited for text, and probabilistic metrics might not capture complex image features effectively.
 ### Metric Learning
 ![Metric learning pipeline](images/MetricLearning.png)
+
 We improved our results by leveraging metric learning, which trains embedding vectors to be more representative. Similar positive samples have embedding vectors pulled closer together, while negative samples are pushed farther away.
 
 We trained our model on triplet loss, which relies on three terms: an anchor, a positive sample, and a negative sample. The idea is to have the distance from the anchor to the positive sample be smaller than the distance to the negative sample. We found that online triplet mining significantly speeds up training by mining the hardest triplets available in one batch. This approach yielded a final MRR@5 score of 0.957.
