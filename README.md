@@ -21,7 +21,7 @@ Although many local feature matching algorithms like SIFT, SURF, or ORB exist, t
 - Image classification pipeline using PyTorch Image Models for features extraction.
 - Deep metric learning pipeline with Triplet loss and mining to learn an embedding representation.
 
-![Metric learning pipeline](images/MetricLearning.png)
+<img src="images/MetricLearning.png" alt="Metric learning pipeline" style="width:100%;">
 
 
 <!-- 
