@@ -9,6 +9,7 @@ This repo contains the code for an image retrieval pipeline designed to retrieve
 - [Result](#result)
 - [Contributors](#contributors)
 ## Repo Tree
+```
 ├── classification            # Code for classification pipeline
 │   ├── dataset.py            # PyTorch dataset
 │   ├── transform.py          # Augmentation code
@@ -26,7 +27,7 @@ This repo contains the code for an image retrieval pipeline designed to retrieve
 ├── final_evaluation.ipynb
 ├── final_evaluation.py
 └── requirements.txt
-
+```
 ## Approach
 Although many local feature matching algorithms like SIFT, SURF, or ORB exist, these are designed to achieve speed and efficiency in the retrieval process. We decided to approach this problem with a deep learning solution, which is believed to outperform local features descriptors algorithms.
 The initial straightforward approach is to train a classifier to extract a feature vector from an input image, then use some distance function to calculate similarity of 2 images. Here's our benchmark results of different distance metrics:
