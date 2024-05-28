@@ -45,10 +45,12 @@ After the installation, you can start the training by runing the training script
 
 
 
-## Approach
+## Goal
+The goal of this project is to develop an efficient and accurate image retrieval system specifically tailored for Sino-nom characters. Sino-nom characters are a unique aspect of East Asian cultures, blending Chinese characters (Sino) with Vietnamese Nom script (nom). Retrieving similar characters accurately is crucial for various applications, including historical document analysis, cultural preservation, and language research. 
+
 Although many local feature matching algorithms like SIFT, SURF, or ORB exist, these are designed to achieve speed and efficiency in the retrieval process. We decided to tackle this problem with a deep learning approach, which is expected to outperform traditional methods.
 
-The initial straightforward approach is to train a classifier to extract a feature vector from an input image, then use some distance function to calculate similarity of 2 images. Here's our benchmark results of different distance metrics:
+<!-- The initial straightforward approach is to train a classifier to extract a feature vector from an input image, then use some distance function to calculate similarity of 2 images. Here's our benchmark results of different distance metrics:
 
 |       | Euclidean | Cosine Similarity | KL Divergence | Cross Entropy |
 |-------|-----------|-------------------|---------------|---------------|
@@ -65,7 +67,7 @@ We trained our model on triplet loss, which relies on three terms: an anchor, a 
 ![Triplet loss](images/triplet_loss.png)
 
 
-We found that online triplet mining significantly speeds up training by mining the hardest triplets available in one batch. This approach yielded a final MRR@5 score of 0.957.
+We found that online triplet mining significantly speeds up training by mining the hardest triplets available in one batch. This approach yielded a final MRR@5 score of 0.957. -->
 
 ## Result
 Our final approach using deep metric learning and online hard triplet mining resulted in an impressive MRR@5 score of 0.957, significantly outperforming initial methods and achieving high retrieval accuracy for Sino-nom characters.
