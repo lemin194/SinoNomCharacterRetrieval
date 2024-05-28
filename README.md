@@ -5,6 +5,7 @@ This repo contains the code for an image retrieval pipeline designed to retrieve
 
 ## Table of Contents
 - [Repo Tree](#repo-tree)
+- [Installation](#installation)
 - [Approach](#approach)
 - [Result](#result)
 - [Contributors](#contributors)
@@ -28,6 +29,11 @@ This repo contains the code for an image retrieval pipeline designed to retrieve
 ├── final_evaluation.py
 └── requirements.txt
 ```
+
+## Installation
+
+
+
 ## Approach
 Although many local feature matching algorithms like SIFT, SURF, or ORB exist, these are designed to achieve speed and efficiency in the retrieval process. We decided to tackle this problem with a deep learning approach, which is expected to outperform traditional methods.
 
@@ -43,7 +49,12 @@ Euclidean Distance, though simple, proved to be the most effective. This result 
 
 We improved our results by leveraging metric learning, which trains embedding vectors to be more representative. Similar positive samples have embedding vectors pulled closer together, while negative samples are pushed farther away.
 
-We trained our model on triplet loss, which relies on three terms: an anchor, a positive sample, and a negative sample. The idea is to have the distance from the anchor to the positive sample be smaller than the distance to the negative sample. We found that online triplet mining significantly speeds up training by mining the hardest triplets available in one batch. This approach yielded a final MRR@5 score of 0.957.
+We trained our model on triplet loss, which relies on three terms: an anchor, a positive sample, and a negative sample. The idea is to have the distance from the anchor to the positive sample be smaller than the distance to the negative sample.
+
+![Triplet loss](images/triplet_loss.png)
+
+
+We found that online triplet mining significantly speeds up training by mining the hardest triplets available in one batch. This approach yielded a final MRR@5 score of 0.957.
 
 ## Result
 Our final approach using deep metric learning and online hard triplet mining resulted in an impressive MRR@5 score of 0.957, significantly outperforming initial methods and achieving high retrieval accuracy for Sino-nom characters.
