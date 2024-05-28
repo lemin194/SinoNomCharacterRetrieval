@@ -55,9 +55,9 @@ We found that online triplet mining significantly speeds up training by mining t
 ├── retrieval                 # Code for retrieval pipeline
 │   ├── oml 
 │   │   ├── timm_extractor.py # Custom OML extractor with timm body
-│   ├── dataset.py        # PyTorch dataset
-│   ├── loss.py           # Triplet loss with online hard triplet mining (later replaced with OML's losses)
-│   ├── transform.py      # Augmentation code
+│   ├── dataset.py            # PyTorch dataset
+│   ├── loss.py               # Triplet loss with online hard triplet mining (later replaced with OML's losses)
+│   ├── transform.py          # Augmentation code
 ├── train_classification_timm.ipynb  # Train an image classifier to extract features
 ├── train_oml.ipynb                  # Train a deep metric learner with open-metric-learning library
 ├── generate_more_data.py            # Generate more data with different Nom fonts
