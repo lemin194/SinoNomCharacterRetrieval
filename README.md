@@ -18,8 +18,8 @@ Although many local feature matching algorithms like SIFT, SURF, or ORB exist, t
 
 **This repo implements:**
 - Depth buffer capture of 3D Sino-nom characters into a 2D image.
-- Image classification pipeline using PyTorch Image Models for features extraction.
-- Deep metric learning pipeline with Triplet loss and mining to learn an embedding representation.
+- Image classification pipeline using PyTorch Image Models.
+- Deep metric learning pipeline with Triplet loss and mining.
 
 <img src="images/MetricLearning.png" alt="Metric learning pipeline" style="width:100%;">
 
