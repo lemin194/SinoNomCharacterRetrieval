@@ -31,6 +31,17 @@ This repo contains the code for an image retrieval pipeline designed to retrieve
 ```
 
 ## Installation
+To reproduce the results, follow the installation steps:
+1. Install open-metric-learning
+```
+pip install -U open-metric-learning
+```
+2. Install pip requirements
+```
+pip install -r requirements.txt
+```
+
+After the installation, you can start the training by runing the training scripts provided.
 
 
 
