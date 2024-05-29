@@ -89,4 +89,6 @@ Our final approach using deep metric learning and online hard triplet mining res
 - Nguyễn Hoàng Quân - 22028130
 
 ## Report
-Final report has been pushed to this repo.
+
+Link to pdf: https://github.com/lemin194/SinoNomCharacterRetrieval/blob/main/Sino_Nom_Character_Retrieval_Final_Report.pdf
+Link to overleaf: https://www.overleaf.com/read/pcjnbwyztxgm#68b364
