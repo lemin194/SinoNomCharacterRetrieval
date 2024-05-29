@@ -87,3 +87,6 @@ Our final approach using deep metric learning and online hard triplet mining res
 ## Contributors
 - Lê Minh Đức - 22028267
 - Nguyễn Hoàng Quân - 22028130
+
+## Report
+Final report has been pushed to this repo.
