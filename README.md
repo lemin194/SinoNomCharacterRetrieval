@@ -5,7 +5,6 @@ This repo contains the code for an image retrieval pipeline designed to retrieve
 
 ## Table of Contents
 - [Goal](#goal)
-<!-- - [Approach](#approach) -->
 - [Repo Tree](#repo-tree)
 - [Installation](#installation)
 - [Result](#result)
