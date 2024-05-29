@@ -90,5 +90,6 @@ Our final approach using deep metric learning and online hard triplet mining res
 
 ## Report
 
-Link to pdf: https://github.com/lemin194/SinoNomCharacterRetrieval/blob/main/Sino_Nom_Character_Retrieval_Final_Report.pdf
-Link to overleaf: https://www.overleaf.com/read/pcjnbwyztxgm#68b364
+Link to pdf: [link](https://github.com/lemin194/SinoNomCharacterRetrieval/blob/main/Sino_Nom_Character_Retrieval_Final_Report.pdf)
+
+Link to the overleaf project: [link](https://www.overleaf.com/read/pcjnbwyztxgm#68b364).
