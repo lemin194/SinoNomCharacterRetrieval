@@ -10,6 +10,7 @@ This repo contains the code for an image retrieval pipeline designed to retrieve
 - [Installation](#installation)
 - [Result](#result)
 - [Contributors](#contributors)
+- [Report](#report)
 
 ## Goal
 The goal of this project is to develop an accurate image retrieval system specifically tailored for Sino-nom characters. Sino-nom characters are a unique aspect of East Asian cultures, blending Chinese characters (Sino) with Vietnamese Nom script (nom). Retrieving similar characters accurately is crucial for various applications, including historical document analysis, cultural preservation, and language research. 
